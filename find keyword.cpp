@@ -27,23 +27,23 @@ int main ()
 	cin>>level;
 	ifstream myfile(file_name.c_str());	//打开文件 
 	string temp;
-	int judge1(string str,string str1);
-	int judge2(char str);
-	void level_1(string word1);		//统计关键字数量 
-	void level_2(string word2);		//统计switch case数量 
-	void level_34(string word3);		//统计if-else和if-elseif-else 数量 
+	int Judge1(string str,string str1);
+	int Judge2(char str);
+	void Level_1(string word1);		//统计关键字数量 
+	void Level_2(string word2);		//统计switch case数量 
+	void Level_34(string word3);		//统计if-else和if-elseif-else 数量 
 	while(getline(myfile,temp))		//逐行读取 
 	{
 		istringstream is(temp);	
 		string s;
 		if(level>=3)
-			level_34(temp);
+			Level_34(temp);
 		while(is>>s)				//去除空格,例如:   a = b   分三次读取为a,b,c 
 		{
 		if(level>=1)
-			level_1(s);
+			Level_1(s);
 		if(level>=2)
-			level_2(s);
+			Level_2(s);
 		}
 		line++;
 	}
@@ -66,23 +66,23 @@ int main ()
 		cout<<"if-elseif-else num: "<<if_elseif_else_num;
 	}
 }
-int judge1(string str,string str1)	//在str中寻找str1 
+int Judge1(string str,string str1)	//在str中寻找str1 
 {
-	int judge2(char str);
+	int Judge2(char str);
 	int loc=str.find(str1,0);
 	int len=str1.length();
 	if(loc!=string::npos)
 	{
 		if(loc==0)
 		{
-			if(judge2(str[loc+len])==0)
+			if(Judge2(str[loc+len])==0)
 				return 1;
 			else 
 				return 0;
 		}
 		else
 		{
-			if(judge2(str[loc-1])==0&&judge2(str[loc+len])==0)
+			if(Judge2(str[loc-1])==0&&judge2(str[loc+len])==0)
 				return 1;
 			else
 				return 0;
@@ -90,7 +90,7 @@ int judge1(string str,string str1)	//在str中寻找str1
 	}
 	return 0;
 }
-int judge2(char str)			//判断是否是英文字母
+int Judge2(char str)			//判断是否是英文字母
 {
 	if(str>='a'&&str<='z')
 		return 1;
@@ -98,49 +98,49 @@ int judge2(char str)			//判断是否是英文字母
 		return 1;
 	return 0;
 }
-void level_1(string word1)		//关键字数量 
+void Level_1(string word1)		//关键字数量 
 {
 	for(int a=0;a<32;a++)			//找到关键词 
 	{
-		if(judge1(word1,key_word[a])==1)
+		if(Judge1(word1,key_word[a])==1)
 		{
 			keyword_num++;
 			break;
 		}
 	}
 }	
-void level_2(string word2)		//switch case数量 
+void Level_2(string word2)		//switch case数量 
 {
 	if(flag)
 	{
-		if(judge1(word2,"case")==1)
+		if(Judge1(word2,"case")==1)
 		{
 			switch_case[switch_num]++;
 		}
 	}	
-	if(judge1(word2,"switch")==1)		//找到switch
+	if(Judge1(word2,"switch")==1)		//找到switch
 	{
 		switch_num++;
 		flag=1;
 	}
 }
-void level_34(string word3)		//if-else 数量 
+void Level_34(string word3)		//if-else 数量 
 {
-	if(judge1(word3,"else if"))
+	if(Judge1(word3,"else if"))
 	{
 		top++;
 		stack[top]=2;
 	}
 	else
 	{
-		if(judge1(word3,"if"))
+		if(Judge1(word3,"if"))
 		{
 			top++;
 			stack[top]=1;
 		}
 		else
 		{
-			if(judge1(word3,"else"))
+			if(Judge1(word3,"else"))
 			{
 				if(stack[top]==1)
 				{
