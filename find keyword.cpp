@@ -21,26 +21,26 @@ int main ()
 {
 	int level;
 	string file_name;
-	cout<<"ÊäÈëÎÄ¼şÂ·¾¶:";				
+	cout<<"è¾“å…¥æ–‡ä»¶è·¯å¾„:";				
 	cin>>file_name;						
-	//ÊäÈëÎÄ¼şÂ·¾¶C:\\Users\\86199\\Desktop\\keyword.txt
-	cout<<"ÊäÈëÍê³ÉµÈ¼¶:";
+	//è¾“å…¥æ–‡ä»¶è·¯å¾„C:\\Users\\86199\\Desktop\\keyword.txt
+	cout<<"è¾“å…¥å®Œæˆç­‰çº§:";
 	cin>>level;
-	ifstream myfile(file_name.c_str());	//´ò¿ªÎÄ¼ş 
+	ifstream myfile(file_name.c_str());	//æ‰“å¼€æ–‡ä»¶ 
 	string temp;
 	int judge1(string str,string str1);
 	int judge2(char str);
-	void level_1(string word1);		//¹Ø¼ü×ÖÊıÁ¿ 
-	void level_2(string word2);		//switch caseÊıÁ¿ 
-	void level_34(string word3);		//if-else ÊıÁ¿ 
+	void level_1(string word1);		//å…³é”®å­—æ•°é‡ 
+	void level_2(string word2);		//switch caseæ•°é‡ 
+	void level_34(string word3);		//if-else æ•°é‡ 
 	int line=0;
-	while(getline(myfile,temp))		//ÖğĞĞ¶ÁÈ¡ 
+	while(getline(myfile,temp))		//é€è¡Œè¯»å– 
 	{
 		istringstream is(temp);	
 		string s;
 		if(level>=3)
 			level_34(temp);
-		while(is>>s)				//È¥³ı¿Õ¸ñ,ÀıÈç:   a = b   ·ÖÈı´Î¶ÁÈ¡Îªa,b,c 
+		while(is>>s)				//å»é™¤ç©ºæ ¼,ä¾‹å¦‚:   a = b   åˆ†ä¸‰æ¬¡è¯»å–ä¸ºa,b,c 
 		{
 		if(level>=1)
 			level_1(s);
@@ -68,7 +68,7 @@ int main ()
 		cout<<"if-elseif-else num: "<<if_elseif_else_num;
 	}
 }
-int judge1(string str,string str1)	//ÔÚstrÖĞÑ°ÕÒstr1 
+int judge1(string str,string str1)	//åœ¨strä¸­å¯»æ‰¾str1 
 {
 	int judge2(char str);
 	int loc=str.find(str1,0);
@@ -92,7 +92,7 @@ int judge1(string str,string str1)	//ÔÚstrÖĞÑ°ÕÒstr1
 	}
 	return 0;
 }
-int judge2(char str)
+int judge2(char str)			//åˆ¤æ–­æ˜¯å¦æ˜¯è‹±æ–‡å­—æ¯
 {
 	if(str>='a'&&str<='z')
 		return 1;
@@ -100,9 +100,9 @@ int judge2(char str)
 		return 1;
 	return 0;
 }
-void level_1(string word1)		//¹Ø¼ü×ÖÊıÁ¿ 
+void level_1(string word1)		//å…³é”®å­—æ•°é‡ 
 {
-	for(int a=0;a<32;a++)			//ÕÒµ½¹Ø¼ü´Ê 
+	for(int a=0;a<32;a++)			//æ‰¾åˆ°å…³é”®è¯ 
 	{
 		if(judge1(word1,key_word[a])==1)
 		{
@@ -111,7 +111,7 @@ void level_1(string word1)		//¹Ø¼ü×ÖÊıÁ¿
 		}
 	}
 }	
-void level_2(string word2)		//switch caseÊıÁ¿ 
+void level_2(string word2)		//switch caseæ•°é‡ 
 {
 	if(flag)
 	{
@@ -120,13 +120,13 @@ void level_2(string word2)		//switch caseÊıÁ¿
 			switch_case[switch_num]++;
 		}
 	}	
-	if(judge1(word2,"switch")==1)		//ÕÒµ½switch
+	if(judge1(word2,"switch")==1)		//æ‰¾åˆ°switch
 	{
 		switch_num++;
 		flag=1;
 	}
 }
-void level_34(string word3)		//if-else ÊıÁ¿ 
+void level_34(string word3)		//if-else æ•°é‡ 
 {
 	if(judge1(word3,"else if"))
 	{
