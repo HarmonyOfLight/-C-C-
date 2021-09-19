@@ -80,7 +80,7 @@ int Judge1(string str,string str1)
 		}
 		else
 		{
-			if(Judge2(str[loc-1])==0&&judge2(str[loc+len])==0)
+			if(Judge2(str[loc-1])==0&&Judge2(str[loc+len])==0)
 				return 1;
 			else
 				return 0;
