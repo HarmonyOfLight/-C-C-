@@ -22,13 +22,12 @@ int main ()
 	string file_name;
 	cout<<"输入文件路径:";				
 	cin>>file_name;						
-	//输入文件路径C:\\Users\\86199\\Desktop\\keyword.txt
 	cout<<"输入完成等级:";
 	cin>>level;
 	ifstream myfile(file_name.c_str());	//打开文件 
 	string temp;
-	int Judge1(string str,string str1);
-	int Judge2(char str);
+	int Judge1(string str,string str1);	//在str中寻找str1 
+	int Judge2(char str);			//判断这个字符是否英文字母，
 	void Level_1(string word1);		//统计关键字数量 
 	void Level_2(string word2);		//统计switch case数量 
 	void Level_34(string word3);		//统计if-else和if-elseif-else 数量 
@@ -38,14 +37,13 @@ int main ()
 		string s;
 		if(level>=3)
 			Level_34(temp);
-		while(is>>s)				//去除空格,例如:   a = b   分三次读取为a,b,c 
+		while(is>>s)			//去除空格,例如:   a = b   分三次读取为a，=，b。 
 		{
 		if(level>=1)
 			Level_1(s);
 		if(level>=2)
 			Level_2(s);
 		}
-		line++;
 	}
 	if(level>=1)
 		cout<<"total num: "<<keyword_num<<endl;
@@ -66,7 +64,7 @@ int main ()
 		cout<<"if-elseif-else num: "<<if_elseif_else_num;
 	}
 }
-int Judge1(string str,string str1)	//在str中寻找str1 
+int Judge1(string str,string str1)	
 {
 	int Judge2(char str);
 	int loc=str.find(str1,0);
@@ -90,7 +88,7 @@ int Judge1(string str,string str1)	//在str中寻找str1
 	}
 	return 0;
 }
-int Judge2(char str)			//判断是否是英文字母
+int Judge2(char str)			
 {
 	if(str>='a'&&str<='z')
 		return 1;
@@ -98,9 +96,9 @@ int Judge2(char str)			//判断是否是英文字母
 		return 1;
 	return 0;
 }
-void Level_1(string word1)		//关键字数量 
+void Level_1(string word1)		
 {
-	for(int a=0;a<32;a++)			//找到关键词 
+	for(int a=0;a<32;a++)			
 	{
 		if(Judge1(word1,key_word[a])==1)
 		{
@@ -109,7 +107,7 @@ void Level_1(string word1)		//关键字数量
 		}
 	}
 }	
-void Level_2(string word2)		//switch case数量 
+void Level_2(string word2)		
 {
 	if(flag)
 	{
@@ -118,15 +116,15 @@ void Level_2(string word2)		//switch case数量
 			switch_case[switch_num]++;
 		}
 	}	
-	if(Judge1(word2,"switch")==1)		//找到switch
+	if(Judge1(word2,"switch")==1)		
 	{
 		switch_num++;
 		flag=1;
 	}
 }
-void Level_34(string word3)		//if-else 数量 
+void Level_34(string word3)		
 {
-	if(Judge1(word3,"else if"))
+	if(Judge1(word3,"else if"))	
 	{
 		top++;
 		stack[top]=2;
