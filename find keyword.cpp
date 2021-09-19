@@ -29,10 +29,9 @@ int main ()
 	string temp;
 	int judge1(string str,string str1);
 	int judge2(char str);
-	void level_1(string word1);		//关键字数量 
-	void level_2(string word2);		//switch case数量 
-	void level_34(string word3);		//if-else 数量 
-	int line=0;
+	void level_1(string word1);		//统计关键字数量 
+	void level_2(string word2);		//统计switch case数量 
+	void level_34(string word3);		//统计if-else和if-elseif-else 数量 
 	while(getline(myfile,temp))		//逐行读取 
 	{
 		istringstream is(temp);	
