@@ -94,6 +94,10 @@ int Judge2(char str)
 		return 1;
 	if(str>='A'&&str<='Z')
 		return 1;
+	if(str=='_')
+		return 0; 
+	if(str>='0'&&str<='9')
+		return 0;
 	return 0;
 }
 void Level_1(string word1)		
